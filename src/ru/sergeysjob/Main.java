@@ -8,10 +8,10 @@ public class Main {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             System.out.println("Успешное подключение, Друг!");
         }
-        catch(Exception e){
+        catch(Exception ex){
             System.out.println("не прошло...");
 
-            System.out.println(e);
+            System.out.println(ex);
         }
     }
 }
