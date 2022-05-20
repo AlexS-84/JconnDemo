@@ -16,7 +16,7 @@ public class Main {
         try {
             //String url = "jdbc:mysql://localhost/jconndemo";
             //String username = "root";
-            //String password = "test1234";
+            //String password = "";
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             try (Connection conn = getConnection()) {
                 System.out.println("Успешное подключение, Друг!");
