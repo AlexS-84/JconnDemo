@@ -20,6 +20,14 @@ public class Main {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             try (Connection conn = getConnection()) {
                 System.out.println("Успешное подключение, Друг!");
+
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery ("select * from boys");
+            while (resultSet.next()){
+                String name = resultSet.getString(1);
+                String city = resultSet.getString(2);
+                System.out.printf("%s - %s\n", name, city);
+            }
             }
         } catch (Exception ex) {
             logger.info(ex);
