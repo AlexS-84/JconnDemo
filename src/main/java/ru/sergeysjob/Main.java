@@ -14,11 +14,11 @@ public class Main {
     public static void main(String[] args) {
         // write your code here
         try {
-            //String url = "jdbc:mysql://localhost/jconndemo";
-            //String username = "root";
-            //String password = "";
-            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-            try (Connection conn = getConnection()) {
+            String url = "jdbc:mysql://localhost/jconndemo";
+            String username = "root";
+            String password = "test1234";
+            //Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+            try (Connection conn = DriverManager.getConnection(url,username,password)) {
                 System.out.println("Успешное подключение, Друг!");
 
                 Statement statement = conn.createStatement();
@@ -32,19 +32,6 @@ public class Main {
         } catch (Exception ex) {
             logger.info(ex);
         }
-    }
-
-    public static Connection getConnection() throws SQLException, IOException {
-
-        Properties props = new Properties();
-        try (InputStream in = Files.newInputStream(Paths.get("database.properties"))) {
-            props.load(in);
-        }
-        String url = props.getProperty("url");
-        String username = props.getProperty("username");
-        String password = props.getProperty("password");
-
-        return DriverManager.getConnection(url, username, password);
     }
 }
 
